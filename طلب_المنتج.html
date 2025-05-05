@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>طلب منتج</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>طلب منتج</h1>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2 id="product-title"></h2>
+      <form action="https://formsubmit.co/bouazzasalah120120@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        
+        <input type="text" name="الاسم" placeholder="الاسم الكامل" required>
+        <input type="tel" name="رقم الهاتف" placeholder="رقم الهاتف" required>
+        <input type="text" name="الموقع" placeholder="المدينة / الولاية" required>
+        <input type="text" name="المنتج" id="product-name" placeholder="اسم المنتج" readonly>
+        <textarea name="تفاصيل الطلب" id="product-details" placeholder="تفاصيل الطلب" rows="4" readonly></textarea>
+        
+        <button type="submit">إرسال الطلب</button>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    // استخراج المعلمات من URL
+    function getQueryParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const product = urlParams.get('product');
+      const details = urlParams.get('details');
+      return { product, details };
+    }
+
+    // ملء النموذج بناءً على المعلمات
+    window.onload = function() {
+      const { product, details } = getQueryParams();
+      document.getElementById('product-title').innerText = product;
+      document.getElementById('product-name').value = product;
+      document.getElementById('product-details').value = details;
+    };
+  </script>
+</body>
+</html>
+    
