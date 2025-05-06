@@ -43,26 +43,16 @@
       width: 100%;
       border-radius: 10px;
     }
-    form {
-      margin-top: 2rem;
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input, textarea, button {
+    button {
       width: 100%;
       margin-top: 0.5rem;
       padding: 0.7rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    button {
       background: #ff69b4;
       color: white;
       border: none;
+      border-radius: 5px;
       cursor: pointer;
+      font-size: 1rem;
     }
     .lang-switch {
       text-align: center;
@@ -106,13 +96,13 @@
           <img src="images/pc1.jpg" alt="حاسوب 1">
           <h3>حاسوب ألعاب</h3>
           <p>Intel i7 - 16GB RAM - RTX 3060</p>
-          <button onclick="location.href='طلب_المنتج.html'">طلب</button>
+          <button onclick="orderProduct('حاسوب ألعاب', 'Intel i7 - 16GB RAM - RTX 3060')">طلب</button>
         </div>
         <div class="product">
           <img src="images/accessory.jpg" alt="ملحق">
           <h3>لوحة مفاتيح ميكانيكية</h3>
           <p>RGB - USB</p>
-          <button onclick="location.href='طلب_المنتج.html'">طلب</button>
+          <button onclick="orderProduct('لوحة مفاتيح ميكانيكية', 'RGB - USB')">طلب</button>
         </div>
       </div>
     </section>
@@ -135,6 +125,11 @@
         document.getElementById(id).innerText = texts[id];
       }
       document.body.dir = lang === 'fr' ? 'ltr' : 'rtl';
+    }
+
+    function orderProduct(name, details) {
+      const url = `طلب_المنتج.html?name=${encodeURIComponent(name)}&details=${encodeURIComponent(details)}`;
+      window.location.href = url;
     }
   </script>
 </body>
