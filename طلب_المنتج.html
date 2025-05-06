@@ -1,52 +1,93 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>طلب منتج</title>
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: #f5f5f5;
+      direction: rtl;
+    }
+    header {
+      background: #ff69b4;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    .container {
+      padding: 2rem;
+    }
+    form {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>طلب منتج</h1>
+    <p>يرجى تعبئة المعلومات أدناه لإتمام الطلب</p>
   </header>
 
   <div class="container">
-    <section>
-      <h2 id="product-title"></h2>
-      <form action="https://formsubmit.co/bouazzasalah120120@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        
-        <input type="text" name="الاسم" placeholder="الاسم الكامل" required>
-        <input type="tel" name="رقم الهاتف" placeholder="رقم الهاتف" required>
-        <input type="text" name="الموقع" placeholder="المدينة / الولاية" required>
-        <input type="text" name="المنتج" id="product-name" placeholder="اسم المنتج" readonly>
-        <textarea name="تفاصيل الطلب" id="product-details" placeholder="تفاصيل الطلب" rows="4" readonly></textarea>
-        
-        <button type="submit">إرسال الطلب</button>
-      </form>
-    </section>
+    <form action="https://formsubmit.co/bouazzasalah120120@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+
+      <input type="text" name="الاسم" placeholder="الاسم الكامل" required>
+      <input type="tel" name="رقم الهاتف" placeholder="رقم الهاتف" required>
+      <input type="text" name="الموقع" placeholder="المدينة / الولاية" required>
+      
+      <input type="text" name="اسم المنتج" id="product-name" placeholder="اسم المنتج" required>
+      <textarea name="تفاصيل المنتج" id="product-details" rows="4" placeholder="تفاصيل المنتج" required></textarea>
+
+      <button type="submit">إرسال الطلب</button>
+    </form>
   </div>
 
+  <footer>
+    &copy; 2025 hichem_technology | جميع الحقوق محفوظة
+  </footer>
+
   <script>
-    // استخراج المعلمات من URL
-    function getQueryParams() {
+    function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
-      const product = urlParams.get('product');
-      const details = urlParams.get('details');
-      return { product, details };
+      return urlParams.get(param);
     }
 
-    // ملء النموذج بناءً على المعلمات
-    window.onload = function() {
-      const { product, details } = getQueryParams();
-      document.getElementById('product-title').innerText = product;
-      document.getElementById('product-name').value = product;
-      document.getElementById('product-details').value = details;
+    window.onload = function () {
+      const name = getQueryParam('name');
+      const details = getQueryParam('details');
+
+      if (name) document.getElementById('product-name').value = name;
+      if (details) document.getElementById('product-details').value = details;
     };
   </script>
 </body>
 </html>
-    
