@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>differetail - متجر الحواسيب</title>
+  <title>hichem_technology - متجر الحواسيب</title>
   <style>
     body {
       margin: 0;
@@ -11,33 +11,27 @@
       background: #f5f5f5;
       direction: rtl;
     }
-
     header {
-      background: #ff69b4; /* اللون الوردي */
+      background: #ff69b4;
       color: white;
       text-align: center;
       padding: 1rem;
     }
-
     header img {
       width: 60px;
       border-radius: 50%;
     }
-
     .container {
       padding: 2rem;
     }
-
     h2 {
-      color: #ff69b4; /* اللون الوردي */
+      color: #ff69b4;
     }
-
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
     }
-
     .product {
       background: white;
       padding: 1rem;
@@ -45,12 +39,10 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       text-align: center;
     }
-
     .product img {
       width: 100%;
       border-radius: 10px;
     }
-
     form {
       margin-top: 2rem;
       background: white;
@@ -58,7 +50,6 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
     input, textarea, button {
       width: 100%;
       margin-top: 0.5rem;
@@ -67,19 +58,16 @@
       border-radius: 5px;
       font-size: 1rem;
     }
-
     button {
-      background: #ff69b4; /* اللون الوردي */
+      background: #ff69b4;
       color: white;
       border: none;
       cursor: pointer;
     }
-
     .lang-switch {
       text-align: center;
       margin-top: 1rem;
     }
-
     .lang-switch button {
       margin: 0 5px;
       padding: 0.4rem 1rem;
@@ -89,7 +77,6 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     footer {
       text-align: center;
       padding: 1rem;
@@ -101,8 +88,8 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="شعار المتجر">
-    <h1>differetail</h1>
+    <img src="images/logo.png" alt="شعار المتجر">
+    <h1>hichem_technology</h1>
     <p>متجر لعرض وطلب الحواسيب ومستلزماتها</p>
   </header>
 
@@ -116,58 +103,37 @@
       <h2 id="products-title">منتجات متوفرة</h2>
       <div class="products">
         <div class="product">
-          <img src="pc1.jpg" alt="حاسوب 1">
+          <img src="images/pc1.jpg" alt="حاسوب 1">
           <h3>حاسوب ألعاب</h3>
           <p>Intel i7 - 16GB RAM - RTX 3060</p>
-          <button onclick="alert('لطلب هذا المنتج، يرجى ملء النموذج أدناه')">طلب</button>
+          <button onclick="location.href='طلب_المنتج.html'">طلب</button>
         </div>
         <div class="product">
-          <img src="accessory.jpg" alt="ملحق">
+          <img src="images/accessory.jpg" alt="ملحق">
           <h3>لوحة مفاتيح ميكانيكية</h3>
           <p>RGB - USB</p>
-          <button onclick="alert('لطلب هذا المنتج، يرجى ملء النموذج أدناه')">طلب</button>
+          <button onclick="location.href='طلب_المنتج.html'">طلب</button>
         </div>
       </div>
-    </section>
-
-    <section>
-      <h2 id="request-title">طلب منتج</h2>
-      <form action="https://formsubmit.co/bouazzasalah120120@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        
-        <input type="text" name="الاسم" placeholder="الاسم الكامل" required>
-        <input type="tel" name="رقم الهاتف" placeholder="رقم الهاتف" required>
-        <input type="text" name="الموقع" placeholder="المدينة / الولاية" required>
-        <textarea name="تفاصيل الطلب" placeholder="ما المنتج الذي تريده؟" rows="4" required></textarea>
-        
-        <button type="submit">إرسال الطلب</button>
-      </form>
     </section>
   </div>
 
   <footer>
-    &copy; 2025 differetail | جميع الحقوق محفوظة
+    &copy; 2025 hichem_technology | جميع الحقوق محفوظة
   </footer>
 
   <script>
     function setLang(lang) {
       const arTexts = {
-        'products-title': 'منتجات متوفرة',
-        'request-title': 'طلب منتج',
+        'products-title': 'منتجات متوفرة'
       };
-
       const frTexts = {
-        'products-title': 'Produits disponibles',
-        'request-title': 'Demander un produit',
+        'products-title': 'Produits disponibles'
       };
-
       const texts = lang === 'fr' ? frTexts : arTexts;
-
       for (let id in texts) {
         document.getElementById(id).innerText = texts[id];
       }
-
       document.body.dir = lang === 'fr' ? 'ltr' : 'rtl';
     }
   </script>
